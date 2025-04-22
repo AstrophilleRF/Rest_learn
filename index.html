@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selamat Ulang Tahun!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Baloo+2&display=swap" rel="stylesheet">
+  <!-- CSS tetap sama seperti versi sebelumnya -->
+  <!-- ... (kode CSS kamu disini, tidak berubah) ... -->
+</head>
+<body id="body">
+
+  <div id="particles"></div>
+  <section class="section" id="intro">
+    <div class="intro-text">Haloo dedek iyeh</div>
+    <div class="envelope" onclick="openEnvelope()">💌</div>
+    <div class="tap-text">Pencet amplopnya ya!</div>
+    <div class="birthday-message">
+      <h1>Selamat Ulang Tahun!</h1>
+      <p style="font-size: 2.5rem;">Resti Kusumawati</p>
+    </div>
+  </section>
+
+  <div class="popup" id="popup">
+    <h1>Selamat Ulang Tahun!</h1>
+    <p>Resti Kusumawati</p>
+    <button onclick="closePopup()">Okay</button>
+  </div>
+
+  <!-- Semua section lainnya tetap sama -->
+  <!-- ... (bagian section, galeri, dll tetap sama seperti sebelumnya) ... -->
+
+  <script>
+    function openEnvelope() {
+      const intro = document.getElementById('intro');
+      const body = document.getElementById('body');
+      const popup = document.getElementById('popup');
+
+      intro.classList.add('open');
+      intro.classList.add('hide-text');
+
+      setTimeout(() => {
+        popup.classList.add('show');
+      }, 1000);
+    }
+
+    function closePopup() {
+      const popup = document.getElementById('popup');
+      const body = document.getElementById('body');
+
+      popup.classList.remove('show');
+      body.classList.add('scroll-enabled');
+      window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerText = '💖';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      document.getElementById('particles').appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
